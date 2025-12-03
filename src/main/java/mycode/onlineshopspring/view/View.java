@@ -65,7 +65,7 @@ public class View{
         System.out.println("3->Afiseaza toate detaliile comenzilor");
         System.out.println("4->afiseaza toate produsele");
         System.out.println("CREARE");
-       System.out.println("5->CreareProdus");
+        System.out.println("5->CreareProdus");
         System.out.println("6->CreareDetaliiComanda");
         System.out.println("7->CreareComanda(laClient)");
         System.out.println("8->CreareClient");

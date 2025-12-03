@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import mycode.onlineshopspring.customer.models.Customer;
 import mycode.onlineshopspring.orderDetails.OrderDetails;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 import java.util.TreeSet;
@@ -34,7 +35,7 @@ public class Orders {
     private String orderEmail;
 
     @Column(nullable = false,length = 255)
-    private Date order_date;
+    private LocalDate order_date;
 
     @Column(nullable = false)
     private String orderStatus;

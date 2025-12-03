@@ -1,4 +1,4 @@
 package mycode.onlineshopspring.customer.service;
 
-public interface UserQuerryService {
+public interface UserCommandService {
 }

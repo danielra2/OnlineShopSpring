@@ -35,6 +35,16 @@ public class OrderDetails {
     private Products product;
 
 
+    @Override
+    public String toString(){
+        return "\n  ID: " + id +
+                "\n  price " + price +
+                "\n  sku: " + sku +
+                "\n  quantity: " + quantity +
+                "\n}";
+    }
+
+
 
 
 }

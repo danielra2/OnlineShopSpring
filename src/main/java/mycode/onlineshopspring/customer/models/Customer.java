@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mycode.onlineshopspring.orders.Orders;
-import org.hibernate.query.Order;
+
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -48,4 +48,90 @@ public class Customer {
             orphanRemoval = true
     )
     private Set<Orders> orderSet=new TreeSet<>();
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public String getDefaultShippingAddress() {
+        return defaultShippingAddress;
+    }
+
+    public void setDefaultShippingAddress(String defaultShippingAddress) {
+        this.defaultShippingAddress = defaultShippingAddress;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Set<Orders> getOrderSet() {
+        return orderSet;
+    }
+
+    public void setOrderSet(Set<Orders> orderSet) {
+        this.orderSet = orderSet;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer Details {" +
+                "\n  ID: " + id +
+                "\n  Full Name: " + fullName +
+                "\n  Email: " + email +
+                "\n  Phone: " + phone +
+                "\n  Country: " + country +
+                "\n  Billing Address: " + billingAddress +
+                "\n  Default Shipping Address: " + defaultShippingAddress +
+                "\n}";
+    }
 }

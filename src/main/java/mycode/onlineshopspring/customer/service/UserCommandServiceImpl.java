@@ -3,11 +3,9 @@ import mycode.onlineshopspring.customer.dto.CustomerDto;
 import mycode.onlineshopspring.customer.dto.CustomerResponse;
 import mycode.onlineshopspring.customer.models.Customer;
 import mycode.onlineshopspring.customer.repository.CustomerRepository;
-import mycode.onlineshopspring.exceptions.ProductDoesntExistException;
 import mycode.onlineshopspring.mappers.OnlineShopMapper;
 import mycode.onlineshopspring.orders.models.Orders;
 import mycode.onlineshopspring.orderDetails.models.OrderDetails;
-import mycode.onlineshopspring.products.repository.ProductsRepository;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.util.Set;
@@ -15,12 +13,10 @@ import java.util.Set;
 @Service
 public class UserCommandServiceImpl implements UserCommandService{
     private final CustomerRepository repository;
-    private final ProductsRepository productsRepository;
     private final OnlineShopMapper mapper;
 
-    public UserCommandServiceImpl(CustomerRepository repository,ProductsRepository productsRepository,OnlineShopMapper mapper){
+    public UserCommandServiceImpl(CustomerRepository repository, OnlineShopMapper mapper){
         this.repository=repository;
-        this.productsRepository=productsRepository;
         this.mapper=mapper;
     }
     @Transactional

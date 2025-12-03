@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mycode.onlineshopspring.common.model.AuditableEntity;
 import mycode.onlineshopspring.orderDetails.models.OrderDetails;
 import org.springframework.stereotype.Component;
 
@@ -17,8 +18,7 @@ import java.util.TreeSet;
 @NoArgsConstructor
 @Data
 @Component
-
-public class Products {
+public class Products extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -52,85 +52,6 @@ public class Products {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private Set<OrderDetails> orderDetailsSet=new TreeSet<>();
+    private Set<OrderDetails> orderDetailsSet = new TreeSet<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public String getDescriptions() {
-        return descriptions;
-    }
-
-    public void setDescriptions(String descriptions) {
-        this.descriptions = descriptions;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public Set<OrderDetails> getOrderDetailsSet() {
-        return orderDetailsSet;
-    }
-
-    public void setOrderDetailsSet(Set<OrderDetails> orderDetailsSet) {
-        this.orderDetailsSet = orderDetailsSet;
-    }
 }

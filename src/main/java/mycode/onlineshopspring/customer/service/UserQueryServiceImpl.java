@@ -1,13 +1,15 @@
 package mycode.onlineshopspring.customer.service;
 
+import mycode.onlineshopspring.customer.dto.CustomerListResponse;
 import mycode.onlineshopspring.customer.dto.CustomerResponse;
-import mycode.onlineshopspring.customer.mappers.CustomerMapper; // Trebuie să fie OnlineShopMapper
 import mycode.onlineshopspring.customer.models.Customer;
 import mycode.onlineshopspring.customer.repository.CustomerRepository;
-import mycode.onlineshopspring.mappers.OnlineShopMapper; // Asumând că acesta este noul mapper
+import mycode.onlineshopspring.mappers.OnlineShopMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserQueryServiceImpl implements UserQuerryService {
@@ -20,8 +22,14 @@ public class UserQueryServiceImpl implements UserQuerryService {
     }
 
     @Override
-    public List<CustomerResponse> findAllCustomers() {
-        List<Customer> customerList=customerRepository.findAll();
-        return mapper.mapCustomerListToResponseList(customerList);
+    public CustomerListResponse findAllCustomers(int page, int size) {
+        Pageable pageable = PageRequest.of(Math.max(page, 0), Math.max(size, 1), Sort.by("id"));
+        Page<Customer> customerPage = customerRepository.findAll(pageable);
+        return new CustomerListResponse(
+                mapper.mapCustomerListToResponseList(customerPage.getContent()),
+                customerPage.getTotalElements(),
+                customerPage.getTotalPages(),
+                customerPage.getNumber(),
+                customerPage.getSize());
     }
 }

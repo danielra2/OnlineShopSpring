@@ -1,9 +1,9 @@
-package mycode.onlineshopspring.orders.dto;
+package mycode.onlineshopspring.customer.dto;
 
 import java.util.List;
 
-public record OrdersListResponse(
-        List<OrdersResponse> ordersList,
+public record CustomerListResponse(
+        List<CustomerResponse> customers,
         long totalElements,
         int totalPages,
         int pageNumber,

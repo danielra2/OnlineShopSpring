@@ -1,8 +1,7 @@
 package mycode.onlineshopspring.customer.service;
 
-import mycode.onlineshopspring.customer.dto.CustomerResponse;
-import java.util.List;
+import mycode.onlineshopspring.customer.dto.CustomerListResponse;
 
 public interface UserQuerryService {
-    List<CustomerResponse> findAllCustomers();
+    CustomerListResponse findAllCustomers(int page, int size);
 }

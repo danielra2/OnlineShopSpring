@@ -4,17 +4,16 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mycode.onlineshopspring.common.model.AuditableEntity;
 import mycode.onlineshopspring.orders.models.Orders;
 import mycode.onlineshopspring.products.models.Products;
-
-import java.util.Optional;
 
 @Entity
 @Table(name="masina")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class OrderDetails {
+public class OrderDetails extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,51 +45,4 @@ public class OrderDetails {
                 "\n}";
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Orders getOrder() {
-        return order;
-    }
-
-    public void setOrder(Orders order) {
-        this.order = order;
-    }
-
-    public Products getProduct() {
-        return product;
-    }
-
-    public void setProduct(Products product) {
-        this.product = product;
-    }
 }

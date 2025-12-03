@@ -10,8 +10,6 @@ import mycode.onlineshopspring.products.repository.ProductsRepository;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 
-import java.util.Optional;
-
 @Service
 public class OrderDetailsCommandServiceImpl implements OrderDetailsCommandService{
     private final OrderDetailsRepository repository;

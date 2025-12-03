@@ -75,7 +75,7 @@ public class OnlineShopMapper {
         return e;
     }
     public Set<OrderDetails>mapOrderDetailsDtoSetToEntitySet(Set<OrderDetailsDto>dtoSet){
-        if(dtoSet==null)return new java.util.TreeSet<>();
+        if(dtoSet==null)return new java.util.HashSet<>();
         return dtoSet.stream().map(this::mapOrderDetailsDtoToOrderDetails).collect(Collectors.toSet());
     }
 
@@ -108,7 +108,7 @@ public class OnlineShopMapper {
         return e;
     }
     public Set<Orders>mapOrdersDtoSetToEntitySet(Set<OrdersDto>dtoSet){
-        if(dtoSet==null)return new java.util.TreeSet<>();
+        if(dtoSet==null)return new java.util.HashSet<>();
         return dtoSet.stream().map(this::mapOrdersDtoToOrders).collect(Collectors.toSet());
     }
 

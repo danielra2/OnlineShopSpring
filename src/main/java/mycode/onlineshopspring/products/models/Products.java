@@ -3,20 +3,22 @@ package mycode.onlineshopspring.products.models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import mycode.onlineshopspring.common.model.AuditableEntity;
 import mycode.onlineshopspring.orderDetails.models.OrderDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 @Entity
 @Table(name="products")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EqualsAndHashCode(callSuper = true, exclude = "orderDetailsSet")
 @Component
 public class Products extends AuditableEntity {
     @Id
@@ -52,6 +54,6 @@ public class Products extends AuditableEntity {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private Set<OrderDetails> orderDetailsSet = new TreeSet<>();
+    private Set<OrderDetails> orderDetailsSet = new HashSet<>();
 
 }

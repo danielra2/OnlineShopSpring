@@ -3,16 +3,18 @@ package mycode.onlineshopspring.orderDetails.models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import mycode.onlineshopspring.common.model.AuditableEntity;
 import mycode.onlineshopspring.orders.models.Orders;
 import mycode.onlineshopspring.products.models.Products;
 
 @Entity
-@Table(name="masina")
+@Table(name="order_details")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EqualsAndHashCode(callSuper = true, exclude = {"order", "product"})
 public class OrderDetails extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

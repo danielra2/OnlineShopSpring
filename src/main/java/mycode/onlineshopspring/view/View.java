@@ -325,7 +325,7 @@ public class View {
     }
 
     private PaginationInput readPagination() {
-        int page = readIntWithDefault("Pagina (>=0)", 0, 0);
+        int page = readIntWithDefault("Pagina (>=1)", 1, 1) - 1;
         int size = readIntWithDefault("Dimensiune pagina (>0)", 10, 1);
         return new PaginationInput(page, size);
     }

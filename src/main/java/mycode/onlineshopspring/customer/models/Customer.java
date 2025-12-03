@@ -5,9 +5,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mycode.onlineshopspring.orders.Orders;
+import mycode.onlineshopspring.orders.models.Orders;
 
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -47,7 +48,7 @@ public class Customer {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private Set<Orders> orderSet=new TreeSet<>();
+    private Set<Orders>orderSet=new HashSet<>();
 
 
     public Long getId() {
@@ -134,4 +135,9 @@ public class Customer {
                 "\n  Default Shipping Address: " + defaultShippingAddress +
                 "\n}";
     }
+    public void addOrder(Orders order){
+        orderSet.add(order);
+        order.setCustomer(this);
+    }
+
 }

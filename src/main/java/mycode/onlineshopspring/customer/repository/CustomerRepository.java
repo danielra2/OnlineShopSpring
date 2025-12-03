@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface CustomerRepository extends JpaRepository<Customer,Long> {
     @Override
-    @EntityGraph(attributePaths = "orderSet")
+    @EntityGraph(attributePaths = {"orderSet", "orderSet.orderDetailsSet", "orderSet.orderDetailsSet.product"})
     List<Customer> findAll();
 }

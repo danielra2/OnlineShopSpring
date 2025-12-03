@@ -22,6 +22,8 @@ import mycode.onlineshopspring.products.dto.ProductsDto;
 import mycode.onlineshopspring.products.dto.ProductsResponse;
 import mycode.onlineshopspring.exceptions.ProductDoesntExistException;
 import mycode.onlineshopspring.exceptions.CustomerDoesntExistException;
+import mycode.onlineshopspring.utils.Cart;
+import mycode.onlineshopspring.utils.dto.CartItemDto;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -43,8 +45,10 @@ public class View{
     private OrderDetailsCommandService orderDetailsCommandService;
     private CustomerRepository customerRepository;
     private final Scanner scanner;
+    private Cart cart;
 
-    public View(UserCommandService userCommandService,UserQuerryService userQuerryService,CustomerRepository customerRepository,ProductsQuerryService productsQuerryService,OrdersQuerryService ordersQuerryService,OrderDetailsQuerryService orderDetailsQuerryService,ProductsCommandService productsCommandService,OrdersCommandService ordersCommandService,OrderDetailsCommandService orderDetailsCommandService){
+    public View(UserCommandService userCommandService,UserQuerryService userQuerryService,CustomerRepository customerRepository,ProductsQuerryService productsQuerryService,OrdersQuerryService ordersQuerryService,OrderDetailsQuerryService orderDetailsQuerryService,ProductsCommandService productsCommandService,OrdersCommandService ordersCommandService,OrderDetailsCommandService orderDetailsCommandService,Cart cart){
+
         this.userCommandService=userCommandService;
         this.userQuerryService=userQuerryService;
         this.customerRepository=customerRepository;
@@ -54,6 +58,7 @@ public class View{
         this.productsCommandService=productsCommandService;
         this.ordersCommandService=ordersCommandService;
         this.orderDetailsCommandService=orderDetailsCommandService;
+        this.cart=cart;
         this.scanner=new Scanner(System.in);
     }
 
@@ -366,4 +371,22 @@ public class View{
 //            System.out.println("EroarelaCreareClient:"+e.getMessage());
 //        }
 //    }
+
+    public void viewCheckOut(){
+        Set<CartItemDto>items=cart.getCart();
+        if(items.isEmpty()){
+            System.out.println("COSUL ESTE GOL");
+            return;
+        }
+        System.out.println("ID Client existent: ");
+        Long customerId=scanner.nextLong();
+        scanner.nextLine();
+        System.out.println("Adresa livrare: ");
+        String shippingAddress= scanner.nextLine();
+        System.out.println("Status comanda: ");
+        String orderStatus= scanner.nextLine();
+
+        Set<OrderDetailsDto>orderDetailsDtos=new HashSet<>();
+        int totalAmmount=0;
+    }
 }

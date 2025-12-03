@@ -6,6 +6,8 @@ import mycode.onlineshopspring.products.dto.ProductsListResponse;
 import mycode.onlineshopspring.products.dto.ProductsResponse;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ProductsQuerryServiceImpl implements ProductsQuerryService{
     private final ProductsRepository productsRepository;
@@ -19,5 +21,10 @@ public class ProductsQuerryServiceImpl implements ProductsQuerryService{
         List<Products>productsList=productsRepository.findAll();
         List<ProductsResponse>productsResponseList=mapper.mapProductsListToResponseList(productsList);
         return new ProductsListResponse(productsResponseList);
+    }
+
+    @Override
+    public Optional<ProductsResponse> findProductById(Long id) {
+        return productsRepository.findById(id).map(mapper::mapProductsToProductsResponse);
     }
 }
